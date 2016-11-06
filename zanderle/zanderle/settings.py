@@ -20,7 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'rd*q#@f3&p-++(i$1zcij)-ttb%(f%#-hrkb8meh!@-ao=2)ai'
+SECRET_KEY = os.environ.get('ZANDERLE_API_SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -120,3 +121,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Goodreads API key
+GOODREADS_API_KEY = os.environ.get('GOODREADS_API_KEY')
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
