@@ -16,7 +16,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from goodreads.views import user_index, books_read_shelf
+
 urlpatterns = [
+    url(r'^api/v1/user/books/', books_read_shelf, name='goodreads_user_books_read'),
+    url(r'^api/v1/user/', user_index, name='goodreads_user'),
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
